@@ -10,6 +10,13 @@ A specialized version of OpenCHA for extracting heart rate (HR) from photoplethy
 ✅ **Automated Data Retrieval** – Fetches PPG signals based on user ID, date, and time.  
 ✅ **Benchmarking with OpenAI Models** – Compared with GPT-4o and GPT-4o-mini.  
 
+## How It Works
+1. The agent receives a request to extract **HR from PPG** for a given user, date, and time.
+2. It **retrieves PPG data** from the dataset and applies **signal processing**.
+3. The processed PPG signal is analyzed to **estimate HR**.
+4. The results are formatted in an XML structure and returned to the user.
+
+
 Quick Start with OpenCHA
 ===========
 * [Documentation page](https://docs.opencha.com)
@@ -17,6 +24,11 @@ Quick Start with OpenCHA
 * [How to Contribute](https://docs.opencha.com/user_guide/contribute.html)
 * [API Docs](https://docs.opencha.com/api/index.html)
 * [Examples](https://docs.opencha.com/examples/index.html)
+
+
+
+Installation
+-------------------
 
 To use CHA-PPGHR in a safe and stable way, ensure you have Python 3.10 or higher installed. First, create a virtual environment:
 
@@ -28,8 +40,6 @@ python -m venv /path/to/new/virtual/environment
 source /path/to/new/virtual/environment/bin/activate
 ```
 
-Installation
--------------------
 
 ```bash
 git clone https://github.com/mohammadfeli/CHA-PPGHR.git
@@ -49,6 +59,8 @@ If you want to install all requirements for all tasks and other components, use 
 ```bash
 pip install -e '.[all]'
 ```
+
+
 
 Running CHA-PPGHR
 -------------------
