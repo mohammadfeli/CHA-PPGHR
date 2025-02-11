@@ -1,4 +1,16 @@
-Quick Start
+# CHA-PPGHR: An LLM-Powered Agent for Heart Rate Estimation from PPG
+
+## Description
+A specialized version of OpenCHA for extracting heart rate (HR) from photoplethysmography (PPG) signals using an LLM-powered agent.
+
+## Key Features
+✅ **Built on OpenCHA** – Uses the OpenCHA framework for structured agent-based execution.  
+✅ **HR Estimation from PPG** – Integrates a validated PPG processing pipeline for HR extraction.  
+✅ **LLM-Powered Queries** – Users can request HR analysis through natural language prompts.  
+✅ **Automated Data Retrieval** – Fetches PPG signals based on user ID, date, and time.  
+✅ **Benchmarking with OpenAI Models** – Compared with GPT-4o and GPT-4o-mini.  
+
+Quick Start with OpenCHA
 ===========
 * [Documentation page](https://docs.opencha.com)
 * [User Guide](https://docs.opencha.com/user_guide/index.html)
@@ -6,7 +18,7 @@ Quick Start
 * [API Docs](https://docs.opencha.com/api/index.html)
 * [Examples](https://docs.opencha.com/examples/index.html)
 
-To use CHA in a safe and stable way, ensure you have Python 3.10 or higher installed. First, create a virtual environment:
+To use CHA-PPGHR in a safe and stable way, ensure you have Python 3.10 or higher installed. First, create a virtual environment:
 
 ```python
 # Create the virtual environment
@@ -16,18 +28,12 @@ python -m venv /path/to/new/virtual/environment
 source /path/to/new/virtual/environment/bin/activate
 ```
 
-Now, install the CHA package.
-```bash
-pip install openCHA
-playwright install
-```
-
-Manual Installation
+Installation
 -------------------
 
 ```bash
-git clone https://github.com/Institute4FutureHealth/CHA.git
-cd CHA
+git clone https://github.com/mohammadfeli/CHA-PPGHR.git
+cd CHA-PPGHR
 pip install -e '.[all]'
 playwright install
 ```
@@ -44,7 +50,7 @@ If you want to install all requirements for all tasks and other components, use 
 pip install -e '.[all]'
 ```
 
-Running openCHA
+Running CHA-PPGHR
 -------------------
 
 After installing the package, based on what tasks you want to use, you may need to acquire some api_keys. For example, to get started using openAI GPT3.5 model as LLM in CHA, you need to signup
@@ -72,7 +78,27 @@ cha.run_with_interface()
 This code will run the default interface, and you can access it at the following URL:
 
 **http://127.0.0.1:7860**
+## How to Use
 
-For more examples, visit the [Examples page](https://docs.opencha.com/examples/index.html).
+1. **Select the 'ppg_hr_extraction' task** in the *Task List* dropdown.  
+2. **Write your prompt** to extract HR from a PPG signal for a specific patient, date, and time.  
+3. **Ensure your data is stored correctly**:  
+   - Place data in the `data/` directory.  
+   - Each patient should have a folder named `par_x`, where `x` is the patient ID.  
+   - PPG signals should be stored as `.csv` files named in the format:  
+
+     ```plaintext
+     YYYYMMDDHHMM_Data.csv
+     ```
+
+     Example: `201907011527_Data.csv` corresponds to **July 1, 2019, at 15:27**.  
+   - Each CSV file must include:  
+     - A **`ppg`** column (PPG signal values).  
+     - A **`timestamp`** column (corresponding timestamps).  
+
+## Modifying Data Access
+If you need to change the data access setup, modify the `ppg_hr_extraction.py` file in the `tasks/` directory.
+
+For more examples from OpenCHA, visit the [Examples page](https://docs.opencha.com/examples/index.html).
 
 ![Alt Text](https://docs.opencha.com/_images/Interface.png)
