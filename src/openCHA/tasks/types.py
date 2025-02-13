@@ -1,27 +1,31 @@
 from typing import Dict
 from typing import Type
 
-from openCHA.tasks import AskUser
-from openCHA.tasks import BaseTask
-from openCHA.tasks import ExtractText
-from openCHA.tasks import GoogleSearch
-from openCHA.tasks import GoogleTranslate
-from openCHA.tasks import RunPythonCode
-from openCHA.tasks import SerpAPI
-from openCHA.tasks import TaskType
-from openCHA.tasks import TestFile
-from openCHA.tasks.affect import ActivityAnalysis
-from openCHA.tasks.affect import ActivityGet
-from openCHA.tasks.affect import PPGAnalysis
-from openCHA.tasks.affect import PPGGet
-from openCHA.tasks.affect import SleepAnalysis
-from openCHA.tasks.affect import SleepGet
-from openCHA.tasks.affect import StressAnalysis
-from openCHA.tasks.nutritionix import (
+from tasks.affect import ActivityAnalysis
+from tasks.affect import ActivityGet
+from tasks.affect import PPGAnalysis
+from tasks.affect import PPGGet
+from tasks.affect import SleepAnalysis
+from tasks.affect import SleepGet
+from tasks.affect import StressAnalysis
+from tasks.ask_user import AskUser
+from tasks.extract_text import ExtractText
+from tasks.google_search import GoogleSearch
+from tasks.google_translator import GoogleTranslate
+from tasks.nutritionix.calculate_food_risk_factor import (
     CalculateFoodRiskFactor,
 )
-from openCHA.tasks.nutritionix import QueryNutritionix
+from tasks.nutritionix.query_nutritionix import QueryNutritionix
+from tasks.run_python_code import RunPythonCode
+from tasks.serpapi import SerpAPI
+from tasks.task import BaseTask
+from tasks.task_types import TaskType
+from tasks.test_file import TestFile
 
+from tasks.my_pill_time import MyPIllTime
+
+from tasks.ppg_hr_extraction import PPGHRExtraction
+from tasks.xml_output import XmlOutput
 
 TASK_TO_CLASS: Dict[TaskType, Type[BaseTask]] = {
     TaskType.SERPAPI: SerpAPI,
@@ -40,4 +44,8 @@ TASK_TO_CLASS: Dict[TaskType, Type[BaseTask]] = {
     TaskType.QUERY_NUTRITIONIX: QueryNutritionix,
     TaskType.CALCULATE_FOOD_RISK_FACTOR: CalculateFoodRiskFactor,
     TaskType.GOOGLE_SEARCH: GoogleSearch,
+    TaskType.MY_PILL_TIME:MyPIllTime,
+    TaskType.PPG_HR_EXTRACTION:PPGHRExtraction,
+    TaskType.XML_OUTPUT:XmlOutput,
+
 }
